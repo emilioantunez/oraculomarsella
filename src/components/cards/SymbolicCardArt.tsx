@@ -11,6 +11,7 @@ export function SymbolicCardArt({ card, small = false }: { card: TarotCard; smal
   const isMajor = card.arcana === "major";
   const glyph = isMajor ? "☉" : suitGlyph[card.suit!];
   const count = typeof card.number === "number" ? Math.min(card.number || 1, 10) : 4;
+  const imageSrc = `${import.meta.env.BASE_URL}cards/${card.id}.png`;
   return (
     <div
       className={`relative overflow-hidden rounded-md border border-gold/45 bg-ink shadow-glow ${
@@ -21,7 +22,7 @@ export function SymbolicCardArt({ card, small = false }: { card: TarotCard; smal
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(215,181,109,0.28),transparent_34%),linear-gradient(160deg,rgba(140,79,216,0.34),transparent_60%)]" />
       <img
         className="relative z-10 h-full w-full object-contain p-2"
-        src={`/cards/${card.id}.png`}
+        src={imageSrc}
         alt={`Carta ${card.name.es} del Tarot de Marsella`}
         loading={small ? "lazy" : "eager"}
       />
